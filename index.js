@@ -1,56 +1,62 @@
+console.log("Hello world")
 let B = false,
     I = false,
     N = false,
     G = false,
     O = false;
 
-function newNumber() {
-    let x = Math.floor(Math.random() * 75) + 1;
+    let BNum, INum, NNum, GNum, ONum;
+
+function newNumber(maxNumber){
+    let x = Math.floor(Math.random() * maxNumber) + 1;
+    //if ... else if...else statement
+    //conditional ope
+    // GTE > =, LTE < =,EQ ==,NEQ ! =, AND &&, OR ||
     if (x <= 15) {
-        generateNewNumber(15);
-        B = true;
+      console.log(`New number ${x} belongs to "B"`);
+      B = true;
+      BNum = x;
     } else if (x >= 16 && x <= 30) {
-        generateNewNumber(30);
+        console.log(`New number ${x} belongs to "I"`)
         I = true;
+        INum= x;
     }
-    else if (x >= 31 && x <= 42) {
-        generateNewNumber(42);
+
+    else if (x >= 30 && x <= 45) {
+        console.log(`New number ${x} belongs to "N"`)
         N = true;
+        NNum = x;
     }
-    else if (x >= 46 && x <= 60) {
-        generateNewNumber(60);
+
+    else if (x >= 45 && x <= 60) {
+        console.log(`New number ${x} belongs to "G"`)
         G = true;
+        GNum = x;
     }
-    else if (x >= 61 && x <= 75) {
-        generateNewNumber(75);
+
+    else if (x >= 60 && x <= 75) {
+        console.log(`New number ${x} belongs to "O"`)
         O = true;
+        ONum = x;
+    }
+    
+    else {
+        console.log(`New number ${x} is invalid.`);
     }
 
     if (B == true && I == true && N == true && G == true && O == true) {
-        console.log("BINGO KA SAKIN!!!!!!")
+            console.log(`wow na bingo!`);
+            console.table({
+                B: BNum,
+                I: INum,
+                N: NNum,
+                G: GNum,
+                O: ONum,
+            });
     }
-
+    
+    return console.log(x);
 }
-
-function generateNewNumber(maxNumber) {
-    const min = (maxNumber - 15) + 1;
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(maxNumber);
-
-    let x = Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
-
-    switch (maxNumber) {
-        case 15:
-            return console.log(`B: ${x}`)
-        case 30:
-            return console.log(`I: ${x}`)
-        case 42:
-            return console.log(`N: ${x}`)
-        case 60:
-            return console.log(`G: ${x}`)
-        case 75:
-            return console.log(`O: ${x}`)
-    }
-
+while (!B || !I || !N || !G || !O ) {
+    newNumber(75);
 }
-console.log(newNumber());
